@@ -1,0 +1,34 @@
+     "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin",
+    "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa",
+    "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Edirne", "Elazığ",
+    "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane",
+    "Hakkari", "Hatay", "Isparta", "Mersin (İçel)", "İstanbul", "İzmir",
+    "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırklareli",
+    "Kırşehir","Kilis","Kocaeli (İzmit)", 	"Konya","Kütahya","Malatya","Manisa",
+    "Kahramanmaraş","Mardin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye",
+    "Rize","Sakarya (Adapazarı)","Samsun","Siirt","Sinop","Sivas","Şanlıurfa",
+    "Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van",
+    "Yalova","Yozgat","Zonguldak"
+ };
+for (int i = 0; i < array1.Count; i++) {
+    cities[i] = array1[i].ToUpper();
+}
+
+
+        Dictionary<char, int> letters = new Dictionary<char, int>();
+        foreach (string city in cities) {
+            foreach (char letter in city) {
+                
+                if (letters.ContainsKey(letter)) {
+                    letters[letter]++;
+                } else {
+                    letters[letter] = 1;
+                }
+            }
+        }
+        Console.Write("Şehirlerde geçen harfler: ");
+        foreach (KeyValuePair<char, int> letter in letters) {
+            Console.Write("{0} ({1}) ", letter.Key, letter.Value);
+        }
+    }
+}
