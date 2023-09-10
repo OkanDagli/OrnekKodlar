@@ -1,34 +1,49 @@
-     "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin",
-    "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa",
-    "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Edirne", "Elazığ",
-    "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane",
-    "Hakkari", "Hatay", "Isparta", "Mersin (İçel)", "İstanbul", "İzmir",
-    "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırklareli",
-    "Kırşehir","Kilis","Kocaeli (İzmit)", 	"Konya","Kütahya","Malatya","Manisa",
-    "Kahramanmaraş","Mardin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye",
-    "Rize","Sakarya (Adapazarı)","Samsun","Siirt","Sinop","Sivas","Şanlıurfa",
-    "Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van",
-    "Yalova","Yozgat","Zonguldak"
- };
-for (int i = 0; i < array1.Count; i++) {
-    cities[i] = array1[i].ToUpper();
+using System;
+using System;
+using System.Collections.Generic;
+class Program
+{
+    static void Main(string[] args)
+    {
+        // illeri bir diziye atama
+        string[] cities = new string[] {"Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin", "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa","Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane","Hakkari", "Hatay", "Isparta", "Mersin (İçel)", "İstanbul", "İzmir","Kars", "Kastamonu", "Kayseri","Kırıkkale", "Kırklareli","Kırşehir","Kilis","Kocaeli (İzmit)", "Konya","Kütahya","Malatya","Manisa",   "Kahramanmaraş","Mardin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya (Adapazarı)","Samsun","Siirt","Sinop","Sivas","Şanlıurfa","Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak"};
+//Tüm harfleri büyük harfe çevirelim.
+for (int i = 0; i < cities.Length; i++) {
+    cities[i] = cities[i].ToUpper();
 }
 
-
-        Dictionary<char, int> letters = new Dictionary<char, int>();
-        foreach (string city in cities) {
-            foreach (char letter in city) {
-                
-                if (letters.ContainsKey(letter)) {
-                    letters[letter]++;
-                } else {
-                    letters[letter] = 1;
+// Her bir ilin harflerini saymak için bir sözlük yapısı oluşturalım
+Dictionary<char, int> letterCounts = new Dictionary<char, int>();
+        // Her bir il için döngü
+foreach (string city in cities)
+        {
+            // Her bir harf için döngü
+            foreach (char letter in city)
+            {
+             // Harfin sözlükte olup olmadığını kontrol etme
+                if (letterCounts.ContainsKey(letter))
+                {
+                    // Harf varsa sayısını bir artırma
+                    letterCounts[letter]++;
+                }
+                else
+                {
+                    // Harf yoksa sözlüğe ekleme ve sayısını 1 yapma
+                   letterCounts.Add(letter, 1);
                 }
             }
         }
-        Console.Write("Şehirlerde geçen harfler: ");
-        foreach (KeyValuePair<char, int> letter in letters) {
-            Console.Write("{0} ({1}) ", letter.Key, letter.Value);
+        // Sözlükteki harf ve sayıları ekrana yazdırma
+        foreach (KeyValuePair<char, int> pair in letterCounts)
+        {
+            Console.WriteLine("{0} harfi {1} defa kullanılıyor.", pair.Key, pair.Value);
         }
     }
 }
+
+
+
+
+
+
+
